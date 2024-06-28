@@ -1,4 +1,4 @@
 # Osa 1 - Fullstack open
 
 - [X] 1.1
-- [ ] 1.2
+- [X] 1.2
