@@ -13,13 +13,18 @@ const App = () => {
   ]
    
   const [selected, setSelected] = useState(0)
+	const ary = new Uint8Array(8)
 
   return (
     <div>
-	{anecdotes[selected]}
+	<h1>Anecdote of the day</h1>
+	{anecdotes[selected]} {ary[selected]}
+	<button>vote</button>
 	<button onClick={() => setSelected(
-		Math.floor(Math.random() * 6) + 1
+		Math.floor(Math.random() * 7)
 	)}>next anecdote</button>
+	<h1>Anecdote with most votes</h1>
+	{anecdotes[selected]} has {ary[selected]} votes
     </div>
   )
 }
