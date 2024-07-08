@@ -14,17 +14,18 @@ const App = () => {
    
   const [selected, setSelected] = useState(0)
 	const ary = new Uint8Array(8)
+	const copy = {...ary}
 
   return (
     <div>
 	<h1>Anecdote of the day</h1>
 	{anecdotes[selected]} {ary[selected]}
-	<button>vote</button>
+	<button onClick={() => copy[selected] += 1}>vote</button>
 	<button onClick={() => setSelected(
 		Math.floor(Math.random() * 7)
 	)}>next anecdote</button>
 	<h1>Anecdote with most votes</h1>
-	{anecdotes[selected]} has {ary[selected]} votes
+	{anecdotes[ary.indexOf(Math.max(...ary))]} has {ary[ary.indexOf(Math.max(...ary))]} votes
     </div>
   )
 }
