@@ -35,8 +35,8 @@ const Statistics = (props) => {
 					<StatisticsLine text="neutral" value={props.neutral} />
 					<StatisticsLine text="bad" value={props.bad} />
 					<StatisticsLine text="all" value={props.all} />
-					<StatisticsLine text="average" value={props.average} />
-					<StatisticsLine text="positive" value={props.positive} />
+					<StatisticsLine text="average" value={props.average.toFixed(2)} />
+					<StatisticsLine text="positive" value={props.positive.toFixed(2)} />
 				</tbody>
 			</table>
 		</>
@@ -50,9 +50,6 @@ const App = () => {
 	const [all, setAll] = useState(0)
 	const [average, setAverage] = useState(0)
 	const [positive, setPositive] = useState(0)
-
-	//I AM UNABLE TO FIX THIS SHIT
-	//TODO: fix that NaN error ffs
 
 	const nanproofavg = () => {
 		setAverage(((good * 1) + (bad * -1))/all)
