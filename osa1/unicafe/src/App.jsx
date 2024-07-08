@@ -3,7 +3,7 @@ import { useState } from 'react'
 const Button = ({text, onClick}) => {
 	return (
 		<>
-			<button onClick={()=>onClick}>{text}</button>
+			<button onClick={onClick}>{text}</button>
 		</>
 	)
 }
@@ -51,9 +51,29 @@ const App = () => {
 	const [average, setAverage] = useState(0)
 	const [positive, setPositive] = useState(0)
 
-	const handleGoodClick = () => setGood(good + 1)
-	const handleNeutralClick = () => setNeutral(neutral + 1)
-	const handleBadClick = () => setBad(bad + 1)
+	//I AM UNABLE TO FIX THIS SHIT
+	//TODO: fix that NaN error ffs
+
+	const nanproofavg = () => {
+		setAverage(((good * 1) + (bad * -1))/all)
+	}
+
+	const handleGoodClick = () => {
+		setGood(good + 1)
+		setAll(all + 1)
+		nanproofavg()
+		setPositive((good/all)*100)
+	}
+	const handleNeutralClick = () => {
+		setNeutral(neutral + 1)
+		setAll(all + 1)
+	}
+	const handleBadClick = () => {
+		setBad(bad + 1)
+		setAll(all + 1)
+		setPositive((good/all)*100)
+		nanproofavg()
+	}
 
   	return (
 		<>
