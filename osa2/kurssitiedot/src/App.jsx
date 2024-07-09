@@ -1,50 +1,10 @@
-const Header = (props) => {
-	return (
-		<h1>{props.course}</h1>
-	)
-}
-
-const Part = (props) => {
-	return (
-		<div>
-			<p>
-				{props.part} {props.exercises}
-			</p>
-		</div>
-	)
-}
-
-const Content = (props) => {
-	const renderListOfParts = (parts) => {
-		return parts.map(part => <Part key={part.name} part={part.name} exercises={part.exercises} />)
-	}
-	return (
-		<div>
-		{renderListOfParts(props.parts)}
-		</div>
-	)
-}
-
-const Total = (props) => {
-	return (
-		<div>
-			<p>total of {props.exercises1 + props.exercises2 + props.exercises3} exercises</p>
-		</div>
-	)
-}
-
-const Course = (props) => {
-	return (
-		<>
-      			<Header course={props.course.name} />
-			<Content parts={props.course.parts}/>
-      			<Total exercises={props.course.parts} />
-		</>
-	)
-}
-
+import Course from './Course.jsx'
 const App = () => {
-	const course = {
+	const renderListOfCourses = (courses) => {
+		return courses.map(course => <Course key={course.id} course={course} />)
+	}
+	const courses = [
+		{
 		name: 'Half Stack application development',
 		id: 1,
   		parts: [
@@ -69,11 +29,12 @@ const App = () => {
 				id: 3,
 			}
 		]
-	}
+		}
+	]
 
   	return (
     		<div>
-			<Course course={course} />
+		{renderListOfCourses(courses)}
     		</div>
   	)
 }
