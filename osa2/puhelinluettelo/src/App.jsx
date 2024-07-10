@@ -1,5 +1,42 @@
 import { useState } from 'react'
 
+const Filter = (props) => {
+	return (
+		<>
+			<input value={props.nameq} name="nameq" onChange={e => {
+				props.setNameq(e.target.value)
+				console.log(e.target.value)
+			}}/>
+		</>
+	)
+}
+
+const Adder = (props) => {
+	return (
+		<>
+		<form onSubmit={props.handleInput}>
+			<div>
+				name: <input name="name" />
+			</div>
+			<div>
+				number: <input name="number" />
+			</div>
+			<div>
+				<button type="submit">add</button>
+			</div>
+		</form>
+		</>
+	)
+}
+
+const Persons = (props) => {
+	return (
+		<>
+		{props.renderPersonList()}
+		</>
+	)
+}
+
 const App = () => {
 	const [persons, setPersons] = useState([
 		{ name: 'Arto Hellas', number: "04014311431" },
@@ -27,30 +64,19 @@ const App = () => {
 		}
 	}
 	const renderPersonList = () => {
-		return persons.map(person => <p key={persons.indexOf(person)}>{person.name} {person.number}</p>)
+		return persons
+			.filter(person => person.name.toLowerCase().includes(nameq.toLowerCase()))
+			.map(person => <p key={persons.indexOf(person)}>{person.name} {person.number}</p>)
 	}
 	const [nameq, setNameq] = useState("arto hellas")
 	return (
 	<div>
 		<h2>Phonebook</h2>
-		<input value={nameq} name="nameq" onChange={e => {
-			setNameq(e.target.value)
-			console.log(e.target.value)
-		}}/>
+		<Filter nameq={nameq} setNameq={setNameq} />
 		<h2>Add a new</h2>
-		<form onSubmit={handleInput}>
-			<div>
-				name: <input name="name" />
-			</div>
-			<div>
-				number: <input name="number" />
-			</div>
-			<div>
-				<button type="submit">add</button>
-			</div>
-		</form>
+		<Adder handleInput={handleInput} /> 
 		<h2>Numbers</h2>
-		{renderPersonList()}
+		<Persons renderPersonList={renderPersonList} />
 	</div>
 	)
 }
