@@ -67,6 +67,7 @@ const App = () => {
 			const newPersons = [...persons]
 			const allnames = [newPersons.map((person) => person.name)]
 			setPersons(newPersons.concat({name: event.target.name.value, number: event.target.number.value}))
+			axios.post('http://localhost:3001/persons', {name: event.target.name.value, number: event.target.number.value})
 		} else {
 			alert(event.target.name.value + " has already been added");
 		}
