@@ -31,6 +31,14 @@ const Adder = (props) => {
 	)
 }
 
+const Deletionista = (props) => {
+	return (
+		<>
+		<button onClick={personService.deletePerson(props.personId)}>Delete</button>
+		</>
+	)
+}
+
 const Persons = (props) => {
 	return (
 		<>
@@ -78,7 +86,7 @@ const App = () => {
 	const renderPersonList = () => {
 		return persons
 			.filter(person => person.name.toLowerCase().includes(nameq.toLowerCase()))
-			.map(person => <p key={persons.indexOf(person)}>{person.name} {person.number}</p>)
+			.map(person => <p key={persons.indexOf(person)}>{person.name} {person.number}<Deletionista personId={persons.indexOf(person)}/></p>)
 	}
 	const [nameq, setNameq] = useState("arto hellas")
 	return (
