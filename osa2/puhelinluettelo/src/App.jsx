@@ -41,16 +41,17 @@ const Persons = (props) => {
 
 const App = () => {
 	const [persons, setPersons] = useState([
-		{name: "Arto Hellas", number: 112},
-		{name: "Hilda Vee", number: 911}
 	]) 
 	const [newName, setNewName] = useState('')
 	useEffect(() => {
-		axios.get('http://localhost:3001/persons')
+		personService      
+		.getAll()      
 		.then(response => {
-			console.log("fuck you")
-			setPersons(response.data)
+			setPersons(response.data)      
 		})
+		.catch(error => {
+    		console.log(error)
+  		})
 	})
 	const checkName = (checkedName) => {
 		var perkele = false
@@ -68,7 +69,8 @@ const App = () => {
 			const newPersons = [...persons]
 			const allnames = [newPersons.map((person) => person.name)]
 			setPersons(newPersons.concat({name: event.target.name.value, number: event.target.number.value}))
-			axios.post('http://localhost:3001/persons', {name: event.target.name.value, number: event.target.number.value})
+			//axios.post('http://localhost:3001/persons', {name: event.target.name.value, number: event.target.number.value})
+			personService.create({name: event.target.name.value, number: event.target.number.value})
 		} else {
 			alert(event.target.name.value + " has already been added");
 		}
