@@ -86,7 +86,7 @@ const App = () => {
 	const renderPersonList = () => {
 		return persons
 			.filter(person => person.name.toLowerCase().includes(nameq.toLowerCase()))
-			.map(person => <p key={persons.indexOf(person)}>{person.name} {person.number}<Deletionista personId={persons.indexOf(person)}/></p>)
+			.map(person => <p key={persons.indexOf(person)}>{person.name} {person.number}<Deletionista personId={persons[persons.indexOf(person)].id}/></p>)
 	}
 	const [nameq, setNameq] = useState("arto hellas")
 	return (
