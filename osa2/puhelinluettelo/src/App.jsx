@@ -34,7 +34,7 @@ const Adder = (props) => {
 const Deletionista = (props) => {
 	return (
 		<>
-		<button onClick={personService.deletePerson(props.personId)}>Delete</button>
+		<button onClick={() => personService.deletePerson(props.personId)}>Delete</button>
 		</>
 	)
 }
