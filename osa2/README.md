@@ -16,7 +16,11 @@
 - [X] 2.14
 - [X] 2.15
 - [X] 2.16
-- [ ] 2.17
+- [X] 2.17
 - [ ] 2.18
 - [ ] 2.19
 - [ ] 2.20
+
+# ISSUES
+
+the problem portrayed by 2.17 simply did not exist for me because I check the fucking db so often
