@@ -4,7 +4,9 @@ const SearchField = (props) => {
   return (
     <>
     <h1>Country Informer</h1>
-    <p>Search for country: <input value={props.searchTerm}/></p>
+    <p>Search for country: <input value={props.searchTerm} name="searchfieldy" onChange={e => {
+      props.setSearchTerm(e.target.value);
+    }}/></p>
     </>
   )
 }

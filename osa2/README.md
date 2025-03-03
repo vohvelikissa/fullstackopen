@@ -24,3 +24,5 @@
 # ISSUES
 
 the problem portrayed by 2.17 simply did not exist for me because I check the fucking db so often
+
+I skipped the 2.18 - 2.20 for a bit on 3.3.2025
