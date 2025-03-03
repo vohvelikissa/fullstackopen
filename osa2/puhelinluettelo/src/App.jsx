@@ -1,6 +1,19 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import personService from './services/persons'
+import './style.css'
+
+const Notification = ({ message }) => {
+	if (message === null) {
+		return null
+	}
+	
+	return (
+		<div className="success">
+		  {message}
+		</div>
+	)
+}
 
 const Filter = (props) => {
 	return (
@@ -51,6 +64,7 @@ const App = () => {
 	const [persons, setPersons] = useState([
 	]) 
 	const [newName, setNewName] = useState('')
+	const [successNote, setSuccessNote] = useState('voi vittu')
 	useEffect(() => {
 		personService      
 		.getAll()      
@@ -100,6 +114,7 @@ const App = () => {
 	const [nameq, setNameq] = useState("arto hellas")
 	return (
 	<div>
+		<Notification message={successNote} />
 		<h2>Phonebook</h2>
 		<Filter nameq={nameq} setNameq={setNameq} />
 		<h2>Add a new</h2>
