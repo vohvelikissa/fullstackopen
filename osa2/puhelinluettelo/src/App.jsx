@@ -82,7 +82,14 @@ const App = () => {
 		} else {
 			alert(event.target.name.value + " has already been added");
 			// TODO: figure out how to get the fucking id in here specifically
+			const existingPerson = persons.find(person => person.name === event.target.name.value)
+			console.log(existingPerson.id)
 			// TODO: call the fucking update fucntion with the fucking id fuck fuck fuck
+			personService
+			.update(existingPerson.id, {name: event.target.name.value, number: event.target.number.value})
+			.catch(error => {
+				console.log(error);
+			})
 		}
 	}
 	const renderPersonList = () => {
