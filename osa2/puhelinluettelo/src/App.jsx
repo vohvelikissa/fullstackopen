@@ -81,6 +81,8 @@ const App = () => {
 			personService.create({name: event.target.name.value, number: event.target.number.value})
 		} else {
 			alert(event.target.name.value + " has already been added");
+			// TODO: figure out how to get the fucking id in here specifically
+			// TODO: call the fucking update fucntion with the fucking id fuck fuck fuck
 		}
 	}
 	const renderPersonList = () => {
