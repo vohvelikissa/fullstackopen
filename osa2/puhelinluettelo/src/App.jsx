@@ -64,7 +64,7 @@ const App = () => {
 	const [persons, setPersons] = useState([
 	]) 
 	const [newName, setNewName] = useState('')
-	const [successNote, setSuccessNote] = useState('voi vittu')
+	const [successNote, setSuccessNote] = useState(null)
 	useEffect(() => {
 		personService      
 		.getAll()      
@@ -93,6 +93,8 @@ const App = () => {
 			setPersons(newPersons.concat({name: event.target.name.value, number: event.target.number.value}))
 			//axios.post('http://localhost:3001/persons', {name: event.target.name.value, number: event.target.number.value})
 			personService.create({name: event.target.name.value, number: event.target.number.value})
+			setSuccessNote('Added '+event.target.name.value)
+			setTimeout(() => {setSuccessNote(null)},5000)
 		} else {
 			alert(event.target.name.value + " has already been added");
 			// TODO: figure out how to get the fucking id in here specifically
@@ -104,6 +106,8 @@ const App = () => {
 			.catch(error => {
 				console.log(error);
 			})
+			setSuccessNote('Possibly modified '+event.target.name.value)
+			setTimeout(() => {setSuccessNote(null)},5000)
 		}
 	}
 	const renderPersonList = () => {
